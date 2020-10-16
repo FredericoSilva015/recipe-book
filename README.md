@@ -1,26 +1,48 @@
-1.npm install -g gatsby-cli
-2.cd fred-recipe-book
-3.gatsby develop
+## 🚀 Quick start
+
+1.  **Add the Client.**
+
+    ```npm install -g gatsby-cli```
+
+1.  **Head into the App folder**
+
+    ```cd fred-recipe-book```
+
+1.  **Start the developing**
+
+    ```gatsby develop```
+
+1.  **Or Build**
+
+    ```gatsby build```
 
 
-Objectives
-> Functionality recipe
-    > create recipe
-    > edit recipe
-    > delete recipe
-    > view recipe
-> Edit Functionality recipe
-    > name
-    > number of servings
-    > cooking time
-> Functionality for these recipe properties: ingredients, preparation steps
-    > add 
-    > remove
-    > eddit
+<h1>Objectives</h1>
+
+- Functionality recipe
+    > 
+    create recipe
+    edit recipe
+    delete recipe
+    view recipe
+    >
+- Edit Functionality recipe
+    > 
+    name
+    number of servings
+    cooking time
+    >
+- Functionality for these recipe properties: ingredients, preparation steps
+    > 
+    add 
+    remove 
+    eddit
+    >
 
 
 
 Notes for future
+
 https://www.google.com/search?q=garlic
 Upload images
 date picker
