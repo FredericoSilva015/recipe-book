@@ -17,35 +17,28 @@
     ```gatsby build```
 
 
-<h1>Objectives</h1>
+## :point_right: Objectives
 
 - Functionality recipe
-    > 
-    create recipe
-    edit recipe
-    delete recipe
-    view recipe
-    >
+    - create recipe
+    - edit recipe
+    - delete recipe
+    - view recipe
 - Edit Functionality recipe
-    > 
-    name
-    number of servings
-    cooking time
-    >
+    - name
+    - number of servings
+    - cooking time
 - Functionality for these recipe properties: ingredients, preparation steps
-    > 
-    add 
-    remove 
-    eddit
-    >
+    - add 
+    - remove 
+    - eddit
 
 
+## :warning: Notes
 
-Notes for future
-
-https://www.google.com/search?q=garlic
-Upload images
-date picker
-recipe data structure
-recipe dynamic page
-notes and comments
+- https://www.google.com/search?q=garlic
+- Upload images
+- date picker
+- recipe data structure
+- recipe dynamic page
+- notes and comments
