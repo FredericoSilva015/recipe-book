@@ -2,17 +2,25 @@
 
 1.  **Add the Client.**
 
+    The client is necessary to run gatsby
+
     ```npm install -g gatsby-cli```
 
 1.  **Head into the App folder**
+
+    Current Folder where the APP is located
 
     ```cd fred-recipe-book```
 
 1.  **Start the developing**
 
+    Dev mode command, use this one to see the code or to develop
+
     ```gatsby develop```
 
 1.  **Or Build**
+
+    Build command, build the static site ready for production
 
     ```gatsby build```
 
