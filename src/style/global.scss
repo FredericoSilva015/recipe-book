@@ -13,7 +13,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: calc(#{$desktop} - 20px);
+  max-width: calc(#{$tablet} - 20px);
 
   padding: 0 20px;
   margin: 0 auto;
