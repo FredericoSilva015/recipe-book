@@ -20,12 +20,14 @@ $large: 30px;
 
 // Colors
 $blue: #5454e2;
-$grey-light: #e0d8d8;
+$grey-light: #efecec;
 $cyan: #29f5f5;
 $green: #0e9c0e;
+$green-transparent: #0e9c0e66;
 $red: #f75353;
 $yellow: #f5f54d;
-$white: #ffffff;
+$white: #fff;
+$black: #000;
 
 // line Height
 @function lineHeight( $fontSize: 16px) {

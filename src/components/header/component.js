@@ -9,7 +9,11 @@ const Header = ({ siteTitle }) => (
     <div className={'container ' + Style.headerWrapper}>
       <div className={Style.menuWrapper}>
         <h1 className={Style.title}>{siteTitle} <span role="img" aria-label="cheecky">🧐</span></h1>
-        <button>Menu</button>
+        <button className={Style.menuButton}>
+          <div className={Style.lineTop}></div>
+          <div className={Style.lineMiddle}></div>
+          <div className={Style.lineBottom}></div>
+        </button>
       </div>
       <Search />
     </div>
