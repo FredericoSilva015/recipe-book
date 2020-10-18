@@ -45,7 +45,8 @@
 ## :warning: Notes
 
 - https://www.google.com/search?q=garlic
-- Upload images
+- static data
+- Upload image
 - date picker
 - recipe data structure
 - recipe dynamic page
