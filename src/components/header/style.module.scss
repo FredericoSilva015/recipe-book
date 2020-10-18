@@ -59,13 +59,17 @@
 }
 
 .menuActive {
+    background-color: $green-transparent;
+
     .lineTop {
       transform: translateY(8px) rotate(45deg);
     }
+
     .lineMiddle {
       width: 0;
     }
+
     .lineBottom {
       transform: translateY(-8px) rotate(-45deg);
     }
-  }
+}
