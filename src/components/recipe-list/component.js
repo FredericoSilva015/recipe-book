@@ -1,23 +1,21 @@
 import React from 'react'
-import * as data from '../../data/data.json'
 
-const RecipeList = () => { 
-    const dataHolder = data.default;
+const RecipeList = ({recipeList, callback}) => { 
+    const test = () => {
+        let change = [...recipeList]
+        change[0].name = 'fred'
+        return callback(change)
+    }
 
     return (
         <div>
-            {dataHolder.map(({ _id, name, picture, ingredients, steps, cooking_time, servings}) => {
-                return (
-                    <div key={_id}>
-                        <p>Name {name}</p>
-                        <p>Picture {picture}</p>
-                        <p>Ingredients {ingredients}</p>
-                        <p>Steps {steps}</p>
-                        <p>Time {cooking_time}</p>
-                        <p>Serving {servings}</p>
-                    </div>
-                )
-            })}
+            {console.log('list:', recipeList)}
+            {recipeList.map( (value) => 
+                <div key={value._id}>
+                    {value.name}
+                </div>
+            )}
+            <button onClick={test}>Press to change data</button>
         </div>
     )
 }

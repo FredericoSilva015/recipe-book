@@ -4,7 +4,7 @@ import React from 'react'
 import Search from '../search/component'
 import Style from './style.module.scss'
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, recipeList }) => (
   <header className={Style.header}>
     <div className={'container ' + Style.headerWrapper}>
       <div className={Style.menuWrapper}>
@@ -15,7 +15,7 @@ const Header = ({ siteTitle }) => (
           <div className={Style.lineBottom}></div>
         </button>
       </div>
-      <Search />
+      <Search recipeList = {recipeList}/>
     </div>
   </header>
 )

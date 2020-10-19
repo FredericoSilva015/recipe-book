@@ -9,6 +9,7 @@ class Search extends React.Component {
     render() {
         return (
             <div className={Style.wrapper}>
+                {console.log('search', this.props.recipeList)}
                 <input type="text" className={Style.input} placeholder="🔍 Search for recipe"/>
             </div>
         )
