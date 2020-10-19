@@ -54,9 +54,10 @@
 
 1. **Header**
 
-Two things can be easly spoted, a search and a button.
-- Search is a standard way to look for something, i am a cooker and i know overtime there would be many recipes some by me, some by others, so having a way to look for it is a given. Idea came from https://react-icons.github.io/
-- button 
+    Two things can be easly spoted, a search and a button.
+
+    - Search is a standard way to look for something, i like to cooker, and i know overtime, there would be many recipes. So having a way to look for it is a given. Idea came from https://react-icons.github.io/
+    - button 
 
 2. **Body**
 
