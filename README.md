@@ -47,7 +47,18 @@
 - https://www.google.com/search?q=garlic
 - static data
 - Upload image
-- date picker
-- recipe data structure
-- recipe dynamic page
-- notes and comments
+- search
+- lightbox
+
+## :warning: Why i did this and that
+
+1. **Header**
+
+Two things can be easly spoted, a search and a button.
+- Search is a standard way to look for something, i am a cooker and i know overtime there would be many recipes some by me, some by others, so having a way to look for it is a given
+- button 
+
+2. **Body**
+
+
+3. **why single page**
