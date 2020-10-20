@@ -18,13 +18,17 @@ body {
   padding: 0 20px;
   margin: 0 auto;
 
-  @include tablet {
+  @include desktop {
     padding: 0;
   }
 
   &--full-width {
     width: 100%;
   }
+}
+
+header {
+  z-index: 1;
 }
 
 button {

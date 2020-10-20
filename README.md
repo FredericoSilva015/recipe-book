@@ -46,7 +46,6 @@
 
 - https://www.google.com/search?q=garlic
 - static data
-- Upload image
 - search
 - lightbox
 
@@ -57,9 +56,16 @@
     Two things can be easly spoted, a search and a button.
 
     - Search is a standard way to look for something, i like to cooke, and i know overtime, there would be many recipes. So having a way to look for it is a given. Idea came from https://react-icons.github.io/
-    - Button 
+    - Button for new recipe
 
 2. **Body**
+
+    The List is here, there are also 3 other components, a lightbox to see the recepie, edit and new recipe.
+
+    - List, with all the recipes, thir devided by cards, each one with a button which provides easy functionality
+        - edit recipe
+        - delete recipe
+    - Lightbox 
 
 
 3. **why single page**

@@ -11,8 +11,33 @@ const RecipeList = ({recipeList, callback}) => {
 
     return (
         <>
+            <h2>Meat</h2>
             <div className={Style.recipeList}>
-                {recipeList.map( (value) => 
+                {recipeList.filter(value => value.category === 'meat').map( (value) => 
+                    <RecipeCard key={value._id} recipe={value}/>
+                )}
+            </div>
+            <h2>Fish</h2>
+            <div className={Style.recipeList}>
+                {recipeList.filter(value => value.category === 'fish').map( (value) => 
+                    <RecipeCard key={value._id} recipe={value}/>
+                )}
+            </div>
+            <h2>Vegan</h2>
+            <div className={Style.recipeList}>
+                {recipeList.filter(value => value.category === 'vegan').map( (value) => 
+                    <RecipeCard key={value._id} recipe={value}/>
+                )}
+            </div>
+            <h2>Dessert</h2>
+            <div className={Style.recipeList}>
+                {recipeList.filter(value => value.category === 'dessert').map( (value) => 
+                    <RecipeCard key={value._id} recipe={value}/>
+                )}
+            </div>
+            <h2>Other</h2>
+            <div className={Style.recipeList}>
+                {recipeList.filter(value => value.category === 'other').map( (value) => 
                     <RecipeCard key={value._id} recipe={value}/>
                 )}
             </div>
