@@ -1,0 +1,97 @@
+@import './src/style/variable';
+
+.recipeCard {
+    position: relative;
+    background-color: white;
+
+    width: calc(25% - #{$medium});
+
+    padding: 0 0 $small 0;
+    margin: 0 $medium $medium 0;
+
+    text-align: center;
+
+    border: none;
+    border-radius: 5px;
+    
+    box-shadow: $low-spread;
+
+    cursor: pointer;
+
+    transition: box-shadow .5s ease-in-out, transform .5s ease-in-out;
+
+    &:hover {
+        box-shadow: $large-spread;
+        transform: translateY(-4px);
+    }
+}
+
+.imgWrapper, .title {
+    margin-bottom: $small;
+}
+
+.title, .instructions {
+    padding: 0 $small;
+}
+
+.title {
+    font-size: $p;
+    line-height: lineHeight($p);
+}
+
+.instructions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cookingTime, .servings {
+    display: flex;
+    align-items: center;
+
+    svg {
+        margin-right: $small;
+    }
+}
+
+.cookingTime svg {
+    color: $blue;
+}
+.servings svg {
+    color: $green
+}
+
+.delete, .edit {
+    position: absolute;
+
+    top: 0;
+
+    display: flex;
+
+    padding: $extra_small;
+    
+    border-radius: 100%;
+
+    margin: 3px;
+
+    transition: background-color .5s ease-in-out;
+}
+
+.edit {
+    left: 0;
+    color: $blue;
+    border: 1px solid $blue;
+
+    &:hover, &:active {
+        background-color: $blue-light;
+    }
+}
+
+.delete {
+    right: 0;
+    color: $red;
+    border: 1px solid $red;
+
+    &:hover, &:active {
+        background-color: $red-light;
+    }
+}

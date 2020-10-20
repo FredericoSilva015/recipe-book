@@ -14,20 +14,27 @@ $h3: 20px;
 $p: 16px;
 
 // spacing
+$extra_small: 5px;
 $small: 10px;
 $medium: 20px;
 $large: 30px;
 
 // Colors
 $blue: #5454e2;
+$blue-light: #5454e252;
 $grey-light: #efecec;
 $cyan: #29f5f5;
 $green: #0e9c0e;
 $green-transparent: #0e9c0e66;
 $red: #f75353;
+$red-light: #f7535352;
 $yellow: #f5f54d;
 $white: #fff;
 $black: #000;
+
+// Shadows
+$low-spread:  0 2px 4px #80808054;
+$large-spread: 0 12px 24px 0 #00000047, 0 0 0 #00000000;
 
 // line Height
 @function lineHeight( $fontSize: 16px) {

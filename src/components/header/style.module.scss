@@ -1,4 +1,4 @@
-@import '../../style/variable';
+@import './src/style/variable';
 
 .header {
     position: sticky;
@@ -40,10 +40,6 @@
         background-color: $green-transparent;
     }
 
-    &:focus, &:active {
-        outline: none;
-    }
-
     &:hover .lineMiddle {
         width: 80%;
     }
@@ -58,7 +54,7 @@
     transition: width .2s ease, transform .2s ease;
 }
 
-.menuActive {
+.menuButton:active {
     background-color: $green-transparent;
 
     .lineTop {

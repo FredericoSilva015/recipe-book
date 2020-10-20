@@ -56,8 +56,8 @@
 
     Two things can be easly spoted, a search and a button.
 
-    - Search is a standard way to look for something, i like to cooker, and i know overtime, there would be many recipes. So having a way to look for it is a given. Idea came from https://react-icons.github.io/
-    - button 
+    - Search is a standard way to look for something, i like to cooke, and i know overtime, there would be many recipes. So having a way to look for it is a given. Idea came from https://react-icons.github.io/
+    - Button 
 
 2. **Body**
 

@@ -1,0 +1,9 @@
+@import './src/style/variable';
+
+.recipeList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    margin: $medium -#{$medium} 0 0;
+}

@@ -1,22 +1,22 @@
 import React from 'react'
+import Style from './style.module.scss'
+import RecipeCard from '../recipe-card/component'
 
 const RecipeList = ({recipeList, callback}) => { 
-    const test = () => {
-        let change = [...recipeList]
-        change[0].name = 'fred'
-        return callback(change)
-    }
+    // const test = () => {
+    //     let change = [...recipeList]
+    //     change[0].name = 'fred'
+    //     return callback(change)
+    // }
 
     return (
-        <div>
-            {console.log('list:', recipeList)}
-            {recipeList.map( (value) => 
-                <div key={value._id}>
-                    {value.name}
-                </div>
-            )}
-            <button onClick={test}>Press to change data</button>
-        </div>
+        <>
+            <div className={Style.recipeList}>
+                {recipeList.map( (value) => 
+                    <RecipeCard key={value._id} recipe={value}/>
+                )}
+            </div>
+        </>
     )
 }
 

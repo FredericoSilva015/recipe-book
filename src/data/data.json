@@ -1,6 +1,7 @@
 [
     {
       "_id": "5f8b2a7fdc18e2cd5053dcbc",
+      "category": "meat",
       "picture": "http://placehold.it/32x32",
       "name": "Keri Barker",
       "ingredients": [
@@ -26,6 +27,7 @@
     },
     {
       "_id": "5f8b2a7f26956f166dc877f3",
+      "category": "meat",
       "picture": "http://placehold.it/32x32",
       "name": "Graham Sanford",
       "ingredients": [
@@ -51,6 +53,7 @@
     },
     {
       "_id": "5f8b2a7ffd32f319bc46231a",
+      "category": "fish",
       "picture": "http://placehold.it/32x32",
       "name": "Mullins Fields",
       "ingredients": [
@@ -76,6 +79,7 @@
     },
     {
       "_id": "5f8b2a7f6bb6fb9ae267cd0e",
+      "category": "vegan",
       "picture": "http://placehold.it/32x32",
       "name": "Mckenzie Bruce",
       "ingredients": [
@@ -101,6 +105,7 @@
     },
     {
       "_id": "5f8b2a7f3b9d4e6c4603ae57",
+      "category": "desert",
       "picture": "http://placehold.it/32x32",
       "name": "Fran Shaffer",
       "ingredients": [
@@ -126,6 +131,7 @@
     },
     {
       "_id": "5f8b2a7ff05323af22b1a3d4",
+      "category": "other",
       "picture": "http://placehold.it/32x32",
       "name": "Cathleen Montoya",
       "ingredients": [
