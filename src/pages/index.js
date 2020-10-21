@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Layout from '../components/layout/component'
 import RecipeList from '../components/recipe-list/component'
 import SEO from '../components/seo/component'
+import Lightbox from '../components/lightbox/component'
 import * as data from '../data/data.json'
 
 const IndexPage = () => {
@@ -11,7 +12,12 @@ const IndexPage = () => {
    * list @type {Array} 
    * changeList @type {React.dispatch<any>}
    */
-  const  [ list, changeList ]  = useState(data.default)
+  const  [ list, changeList ] = useState(data.default)
+
+  /**
+   * 
+   */
+  const  [ open, isOpen ] = useState(false);
 
   /** Edit Recipe handler */
 
@@ -33,9 +39,10 @@ const IndexPage = () => {
   /** Creat Recipe Handler */
 
   return (
-    <Layout recipeList={list} callback={changeList}>
+    <Layout recipeList={list} lightboxSetState={isOpen}>
       <SEO title="Home" />
       <RecipeList recipeList={list} deleteHandler={deleteHandler}/>
+      <Lightbox lightboxState={open} lightboxSetState={isOpen} />
     </Layout>
 )}
 

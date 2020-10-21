@@ -71,7 +71,7 @@
 
     This section is for ideas i did not implement but did consider and wanted to work on
 
-    - keywords on the search, i also wished to creat a keyworded search, such has if i apply a button of sort would convert to finding categorys or ingredients. Maybe i want beef today
-    - randompicker a component that picks a lucky number of recipes to try out, spin the wheel for some lucky find's who knows! For those days where you just can't decide what to eat and anything goes.
+    - Keywords on the search, i also wished to creat a keyworded search, such has, if i apply a button of sort would convert to finding categorys or ingredients. Maybe i want beef today, or how many Portuguese recipes i got, something spicy? .. a guy can dream with cake can't i?
+    - Random picker a component that picks a lucky number of recipes to try out, spin the wheel for some lucky find's who knows! For those days where you just can't decide what to eat and anything goes. or maybe just for the lol's...
     - static backend; i wanted to focus just on the front-end. I concluded it would take valuable time from other parts. 
     - Lack of direction, these are mostly my thought's, but i felt i lacked direction. Sometimes freedom can be constricting, i went to several iterations and thoughts until i rested on how i wanted to do things, not on what i wanted to do. Something for me to consider for future projects

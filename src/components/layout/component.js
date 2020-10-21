@@ -12,7 +12,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Header from '../header/component'
 import '../../style/global.scss'
 
-const Layout = ({ children, recipeList }) => {
+const Layout = ({ children, recipeList, lightboxSetState }) => {
 
   /**
    * site metadata
@@ -30,7 +30,7 @@ const Layout = ({ children, recipeList }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} recipeList = {recipeList} />
+      <Header siteTitle={data.site.siteMetadata?.title || `Title`} recipeList={recipeList} lightboxSetState={lightboxSetState} />
       <main className="container">{children}</main>
       <footer className="container">
         <p>A lot of <span role="img" aria-label="heart">&#128151;</span> from Portugal</p>

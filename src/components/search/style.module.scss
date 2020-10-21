@@ -7,7 +7,7 @@
 .input {
     width: 100%;
 
-    border: $white solid 1px;
+    border: 1px solid $white;
     border-radius: 10px;
 
     padding: $extra_small $small;
@@ -25,10 +25,10 @@
     }
 
     &:focus::-webkit-input-placeholder{
-        color: transparent;
+        color: $transparent;
     }
 
     &:focus::-moz-placeholder{
-        color: transparent;
+        color: $transparent;
     }
 }
