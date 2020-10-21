@@ -13,6 +13,11 @@ import Header from '../header/component'
 import '../../style/global.scss'
 
 const Layout = ({ children, recipeList }) => {
+
+  /**
+   * site metadata
+   * @type {Object} data
+   */
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

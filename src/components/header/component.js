@@ -1,4 +1,3 @@
-// import { Link } from "gatsby"
 import PropTypes from 'prop-types'
 import React from 'react'
 import Search from '../search/component'
@@ -22,6 +21,10 @@ const Header = ({ siteTitle, recipeList }) => (
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+}
+
+Header.propTypes = {
+  recipeList: PropTypes.array,
 }
 
 Header.defaultProps = {

@@ -6,7 +6,7 @@ import { BsFillPeopleFill } from 'react-icons/bs'
 import { BiEdit } from 'react-icons/bi';
 import { MdDeleteForever } from 'react-icons/md';
 
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ recipe, deleteHandler }) => {
     return (
         <>
             <div className={Style.recipeCard}>
@@ -19,7 +19,7 @@ const RecipeCard = ({ recipe }) => {
                     <p className={Style.servings}><BsFillPeopleFill />{recipe.servings}</p>
                 </div>
                 <button className={Style.edit} aria-label="edit"><BiEdit /></button>
-                <button className={Style.delete} aria-label="delete"><MdDeleteForever /></button>
+                <button className={Style.delete} aria-label="delete" onClick={() => deleteHandler(recipe)}><MdDeleteForever /></button>
             </div>
         </>
     )
