@@ -28,7 +28,7 @@ const Lightbox = ({ lightboxState, closeHandler }) => {
 
     return (
         <>
-            <div className={`${Style.lightbox} ${animateLightbox}`}>
+            <div className={`${Style.lightbox} ${animateLightbox}`} >
                 <div className={Style.dialog}>
                     <div className={Style.content}>
                     <button className={Style.closeButton} onClick={() => closeHandler()} aria-label="close"><GrClose /></button>
@@ -36,11 +36,11 @@ const Lightbox = ({ lightboxState, closeHandler }) => {
                         
                     </div>
                 </div>
-                {/* The <div> element has na iteraction when the user clicks it in order to close it, this is a standard in many lightboxes
+                {/* The <div> element has na iteraction when the user clicks/esc it in order to close it, this is a standard in many lightboxes
                 But this is not true button, neither should it be tabbable
                     https://jbutz.github.io/bootstrap-lightbox/ */}
                 {/* eslint-disable-next-line */}
-                <div role="button" aria-label="close" className={Style.overlay} onClick={closeHandler}></div>
+                <div role="button" aria-label="close" className={Style.overlay} onClick={closeHandler} ></div>
             </div>
         </>
     )

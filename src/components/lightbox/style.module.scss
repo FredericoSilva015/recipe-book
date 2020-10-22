@@ -71,7 +71,7 @@
 
     transition: background-color .5s ease-in-out;
     
-    &:hover {
+    &:hover, &:focus {
         background-color: $red-light;
     }
     

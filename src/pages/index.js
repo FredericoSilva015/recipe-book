@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import Layout from '../components/layout/component'
 import RecipeList from '../components/recipe-list/component'
 import SEO from '../components/seo/component'
@@ -20,21 +20,6 @@ const IndexPage = () => {
   const openHandler = () => isOpen(true)
   const closeHandler = () => isOpen(false)
 
-  // Lock scrolling in the body
-  useEffect(() => { open ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible' })
-
-  useEffect(() => { 
-    window.addEventListener('keydown', closeHandler)
-    return (
-      window.addEventListener('keydown', closeHandler)
-    )
-  },[])
-
-  /** Edit Recipe handler */
-
-  /** 
-   * Delete Recipe handler 
-   */
   const deleteHandler = (recipe) => {
 
     // confirm the id is valid
@@ -47,13 +32,30 @@ const IndexPage = () => {
     }
   }
 
-  /** Creat Recipe Handler */
+  const handleEsc = useCallback(event => {
+    const { keyCode } = event;
+
+    if (keyCode === 27) {
+      isOpen(false)
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, [handleEsc]);
+
+  // Lock scrolling in the body
+  useEffect(() => { open ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible' })
 
   return (
-    <Layout recipeList={list} openHandler={openHandler}>
+    <Layout recipeList={list} openHandler={openHandler} >
       <SEO title="Home" />
       <RecipeList recipeList={list} deleteHandler={deleteHandler}/>
-      <Lightbox lightboxState={open} closeHandler={closeHandler} />
+      <Lightbox lightboxState={open} closeHandler={closeHandler}/>
     </Layout>
 )}
 

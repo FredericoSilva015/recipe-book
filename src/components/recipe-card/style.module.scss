@@ -33,7 +33,7 @@
         width: calc(25% - #{$medium});
     }
 
-    &:hover {
+    &:hover, &:focus {
         box-shadow: $large-spread;
         transform: translateY(-4px);
     }
@@ -94,7 +94,7 @@
     color: $blue;
     border: 1px solid $blue;
 
-    &:hover, &:active {
+    &:hover, &:focus {
         background-color: $blue-light;
     }
 }
@@ -104,7 +104,7 @@
     color: $red;
     border: 1px solid $red;
 
-    &:hover, &:active {
+    &:hover, &:focus {
         background-color: $red-light;
     }
 }
