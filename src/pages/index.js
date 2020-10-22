@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../components/layout/component'
 import RecipeList from '../components/recipe-list/component'
 import SEO from '../components/seo/component'
@@ -9,20 +9,31 @@ const IndexPage = () => {
 
   /**
    * defining data into App state and setting up changeList to modify state
-   * list @type {Array} 
-   * changeList @type {React.dispatch<any>}
    */
   const  [ list, changeList ] = useState(data.default)
 
   /**
-   * 
+   * Lightbox open state
    */
   const  [ open, isOpen ] = useState(false);
 
+  const openHandler = () => isOpen(true)
+  const closeHandler = () => isOpen(false)
+
+  // Lock scrolling in the body
+  useEffect(() => { open ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible' })
+
+  useEffect(() => { 
+    window.addEventListener('keydown', closeHandler)
+    return (
+      window.addEventListener('keydown', closeHandler)
+    )
+  },[])
+
   /** Edit Recipe handler */
 
-  /** Delete Recipe handler 
-   * @param {Object} recipe
+  /** 
+   * Delete Recipe handler 
    */
   const deleteHandler = (recipe) => {
 
@@ -39,10 +50,10 @@ const IndexPage = () => {
   /** Creat Recipe Handler */
 
   return (
-    <Layout recipeList={list} lightboxSetState={isOpen}>
+    <Layout recipeList={list} openHandler={openHandler}>
       <SEO title="Home" />
       <RecipeList recipeList={list} deleteHandler={deleteHandler}/>
-      <Lightbox lightboxState={open} lightboxSetState={isOpen} />
+      <Lightbox lightboxState={open} closeHandler={closeHandler} />
     </Layout>
 )}
 
