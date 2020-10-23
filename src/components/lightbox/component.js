@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Style from './style.module.scss'
 import { GrClose } from 'react-icons/gr'
 import PartialEdit from '../partial-edit/component'
+import PartialNew from '../partial-new/component'
 
 const Lightbox = ({ lightboxState, closeHandler, partial, recipe }) => {
 
@@ -35,7 +36,7 @@ const Lightbox = ({ lightboxState, closeHandler, partial, recipe }) => {
                         <button className={Style.closeButton} onClick={() => closeHandler()} aria-label="close"><GrClose /></button>
                         <div className={Style.contentWrapper}>
                             { partial === 'edit' ? <PartialEdit recipe={recipe}/> : '' }
-                            { partial === 'new' ? '' : '' }
+                            { partial === 'new' ? <PartialNew /> : '' }
                         </div>
                     </div>
                 </div>
