@@ -49,7 +49,8 @@ const IndexPage = () => {
    * Handle Delete
    * @param {Object} recipe 
    */
-  const deleteHandler = (recipe) => {
+  const deleteHandler = (event, recipe) => {
+    event.stopPropagation();
 
     if (recipe._id) {
       let dataToChange = [...recipeList]

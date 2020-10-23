@@ -25,7 +25,7 @@ const RecipeCard = ({ recipe, lightboxState, deleteHandler, openHandler }) => {
                     <p className={Style.servings}><BsFillPeopleFill />{recipe.servings}</p>
                 </div>
                 <button className={Style.delete} disabled={lightboxState} aria-label="delete" 
-                    onClick={() => deleteHandler(recipe)}
+                    onClick={(e) => deleteHandler(e, recipe)}
                 >
                     <MdDeleteForever />
                 </button>
