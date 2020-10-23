@@ -36,12 +36,15 @@
     transition: background-color .5s ease-in-out, color .2s ease-in;
 
     .iconWrapper {
+        display: flex;
+        align-items: center;
+
         width: 0;
         height: 26px;
 
         border-radius: 100%;
         
-        transition: width  .2s ease-in, margin .2s ease-in;
+        transition: width  .1s ease-in, margin .1s ease-in;
     }
 
     &:hover {
@@ -73,6 +76,6 @@
 
     background-color: $green;
 
-    transition: width .2s ease, transform .2s ease;
+    transition: width .4s ease, transform .2s ease;
 }
 

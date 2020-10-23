@@ -3,12 +3,12 @@ import React from 'react'
 import Search from '../search/component'
 import Style from './style.module.scss'
 
-const Header = ({ siteTitle, recipeList, openHandler }) => (
+const Header = ({ siteTitle, recipeList, lightboxState, openHandler }) => (
   <header className={Style.header}>
     <div className={'container ' + Style.headerWrapper}>
       <div className={Style.menuWrapper}>
         <h1 className={Style.title}>{siteTitle} <span role="img" aria-label="cheecky">🧐</span></h1>
-        <button className={Style.newButton} onClick={() => openHandler('', 'new') }>
+        <button className={Style.newButton} disabled={lightboxState} onClick={() => openHandler('', 'new') }>
           New Recipe
           <div className={Style.iconWrapper}>
             <div className={Style.lineTop}></div>
@@ -16,7 +16,7 @@ const Header = ({ siteTitle, recipeList, openHandler }) => (
           </div>
         </button>
       </div>
-      <Search recipeList={recipeList}/>
+      <Search recipeList={recipeList} lightboxState={lightboxState}/>
     </div>
   </header>
 )

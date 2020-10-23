@@ -23,11 +23,12 @@ const IndexPage = () => {
   const [ partial, setPartial ] = useState('');
 
   /**
-   * 
+   * Single recipe value to store
    */
   const [ recipe, setRecipe] = useState('');
 
   const openHandler = (value, partial) => {
+
     setRecipe(value)
     setPartial(partial)
     isOpen(true)
@@ -83,9 +84,9 @@ const IndexPage = () => {
   useEffect(() => { open ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible' })
 
   return (
-    <Layout recipeList={recipeList} openHandler={openHandler} >
+    <Layout recipeList={recipeList} lightboxState={open} openHandler={openHandler} >
       <SEO title="Home" />
-      <RecipeList recipeList={recipeList} deleteHandler={deleteHandler} openHandler={openHandler}/>
+      <RecipeList recipeList={recipeList} lightboxState={open} deleteHandler={deleteHandler} openHandler={openHandler}/>
       <Lightbox lightboxState={open} closeHandler={closeHandler} partial={partial} recipe={recipe}/>
     </Layout>
 )}

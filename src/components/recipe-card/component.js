@@ -5,10 +5,10 @@ import { GiCookingPot } from 'react-icons/gi'
 import { BsFillPeopleFill } from 'react-icons/bs'
 import { MdDeleteForever } from 'react-icons/md';
 
-const RecipeCard = ({ recipe, deleteHandler, openHandler }) => {
+const RecipeCard = ({ recipe, lightboxState, deleteHandler, openHandler }) => {
     return (
         <>
-            <div role="button" tabIndex="0" className={Style.recipeCard} 
+            <div role="button" tabIndex={lightboxState ? -1 : 0 } className={`${Style.recipeCard} card-button`} 
                 onClick={() => openHandler(recipe, 'edit')} 
                 onKeyDown={(e) => { 
                     if ( e.keyCode === 13 ) {
@@ -24,7 +24,7 @@ const RecipeCard = ({ recipe, deleteHandler, openHandler }) => {
                     <p className={Style.cookingTime}><GiCookingPot />{recipe.cooking_time}</p>
                     <p className={Style.servings}><BsFillPeopleFill />{recipe.servings}</p>
                 </div>
-                <button className={Style.delete} aria-label="delete" 
+                <button className={Style.delete} disabled={lightboxState} aria-label="delete" 
                     onClick={() => deleteHandler(recipe)}
                 >
                     <MdDeleteForever />
