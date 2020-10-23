@@ -1,0 +1,67 @@
+@import './src/style/variable';
+@import './src/style/mixin';
+
+.container {
+    width: 100%
+}
+
+.imgWrapper {
+    max-width: 300px;
+}
+
+.name, 
+.cookingInfo,
+.ingredientsLine,
+.stepsLine {
+
+    input, textarea {
+        width: 100%;
+    }
+
+    input:disabled, textarea:disabled {
+        border: 1px solid $black;
+        display: none;
+        background-color: $transparent;
+    }
+}
+
+.ingredientsLine,
+.stepsLine {
+    display: flex;
+
+    margin-bottom: $small;
+}
+
+.name, .serving, .time {
+    display: flex;
+}
+
+.stepsText, .buttonsWrapper {
+    padding-left: $small;
+}
+
+.stepsText {
+    max-width: 600px;
+}
+
+.edit {
+    display: flex;
+
+    padding: $extra_small;
+    
+    border-radius: 100%;
+
+    margin: 3px;
+
+    transition: background-color .5s ease-in-out;
+
+    color: $blue;
+
+    background-color: $transparent;
+
+    border: 1px solid $blue;
+
+    &:hover, &:focus {
+        background-color: $blue-light;
+    }
+}

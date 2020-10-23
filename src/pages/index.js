@@ -10,21 +10,48 @@ const IndexPage = () => {
   /**
    * defining data into App state and setting up changeList to modify state
    */
-  const  [ list, changeList ] = useState(data.default)
+  const  [ recipeList, changeList ] = useState(data.default)
 
   /**
    * Lightbox open state
    */
   const  [ open, isOpen ] = useState(false);
 
-  const openHandler = () => isOpen(true)
-  const closeHandler = () => isOpen(false)
+  /**
+   * Set type of the lightbox
+   */
+  const [ partial, setPartial ] = useState('');
 
+  /**
+   * 
+   */
+  const [ recipe, setRecipe] = useState('');
+
+  const openHandler = (value, partial) => {
+    setRecipe(value)
+    setPartial(partial)
+    isOpen(true)
+  }
+
+  const closeHandler = () =>{ 
+    isOpen(false)
+
+    // clear the the partial and recipe value in order to update, but respecting the animation time
+    setTimeout(() => {    
+      setPartial('')
+      setRecipe('')
+    }, 200)
+  }
+  
+
+  /**
+   * Handle Delete
+   * @param {Object} recipe 
+   */
   const deleteHandler = (recipe) => {
 
-    // confirm the id is valid
     if (recipe._id) {
-      let dataToChange = [...list]
+      let dataToChange = [...recipeList]
 
       dataToChange = dataToChange.filter((value) => value._id !== recipe._id ? value : '')
 
@@ -32,13 +59,17 @@ const IndexPage = () => {
     }
   }
 
+  /**
+   * Handle Esc press
+   */
   const handleEsc = useCallback(event => {
     const { keyCode } = event;
 
     if (keyCode === 27) {
-      isOpen(false)
+      closeHandler()
     }
   }, []);
+
 
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
@@ -52,10 +83,10 @@ const IndexPage = () => {
   useEffect(() => { open ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible' })
 
   return (
-    <Layout recipeList={list} openHandler={openHandler} >
+    <Layout recipeList={recipeList} openHandler={openHandler} >
       <SEO title="Home" />
-      <RecipeList recipeList={list} deleteHandler={deleteHandler}/>
-      <Lightbox lightboxState={open} closeHandler={closeHandler}/>
+      <RecipeList recipeList={recipeList} deleteHandler={deleteHandler} openHandler={openHandler}/>
+      <Lightbox lightboxState={open} closeHandler={closeHandler} partial={partial} recipe={recipe}/>
     </Layout>
 )}
 

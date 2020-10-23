@@ -36,6 +36,7 @@
     &:hover, &:focus {
         box-shadow: $large-spread;
         transform: translateY(-4px);
+        outline: none;
     }
 }
 
@@ -73,10 +74,11 @@
     color: $green
 }
 
-.delete, .edit {
+.delete {
     position: absolute;
 
     top: 0;
+    right: 0;
 
     display: flex;
 
@@ -87,20 +89,7 @@
     margin: 3px;
 
     transition: background-color .5s ease-in-out;
-}
 
-.edit {
-    left: 0;
-    color: $blue;
-    border: 1px solid $blue;
-
-    &:hover, &:focus {
-        background-color: $blue-light;
-    }
-}
-
-.delete {
-    right: 0;
     color: $red;
     border: 1px solid $red;
 
