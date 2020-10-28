@@ -7,57 +7,42 @@
 
 .imgWrapper {
     max-width: 300px;
+    margin-bottom: $small;
 }
 
-.name, 
+.ingredients, .steps {
+    padding: 0;
+}
+
+.nameInput,
 .cookingInfo,
 .ingredientsLine,
 .stepsLine {
 
     input, textarea {
         width: 100%;
-    }
-
-    input:disabled, textarea:disabled {
-        border: 1px solid $black;
-        display: none;
-        background-color: $transparent;
+        max-width: 800px;
     }
 }
 
 .ingredientsLine,
 .stepsLine {
     display: flex;
-
-    margin-bottom: $small;
 }
 
 .name, .serving, .time {
     display: flex;
 }
 
+.nameInput {
+    margin-bottom: $small;
+}
+
 .stepsText {
     max-width: 600px;
 }
 
-.edit {
-    display: flex;
-
-    padding: $extra_small;
-    
-    border-radius: 100%;
-
-    margin: 3px;
-
-    transition: background-color .5s ease-in-out;
-
-    color: $blue;
-
-    background-color: $transparent;
-
-    border: 1px solid $blue;
-
-    &:hover, &:focus {
-        background-color: $blue-light;
-    }
+.label {
+    width: 100%;
+    max-width: 800px;
 }

@@ -88,7 +88,7 @@ const IndexPage = () => {
     <Layout recipeList={recipeList} lightboxState={open} openHandler={openHandler} >
       <SEO title="Home" />
       <RecipeList recipeList={recipeList} lightboxState={open} deleteHandler={deleteHandler} openHandler={openHandler}/>
-      <Lightbox lightboxState={open} closeHandler={closeHandler} partial={partial} recipe={recipe}/>
+      <Lightbox lightboxState={open} closeHandler={closeHandler} changeList={changeList} partial={partial} recipe={recipe} />
     </Layout>
 )}
 

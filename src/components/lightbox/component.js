@@ -3,8 +3,9 @@ import Style from './style.module.scss'
 import { GrClose } from 'react-icons/gr'
 import PartialEdit from '../partial-edit/component'
 import PartialNew from '../partial-new/component'
+import PartialView from '../partial-view/component'
 
-const Lightbox = ({ lightboxState, closeHandler, partial, recipe }) => {
+const Lightbox = ({ lightboxState, closeHandler, partial, recipe, changeList }) => {
 
     const [ animateLightbox, animate ] = useState('')
     const [ hide, setHidden] = useState(false)
@@ -36,7 +37,8 @@ const Lightbox = ({ lightboxState, closeHandler, partial, recipe }) => {
                         <button className={Style.closeButton} onClick={() => closeHandler()} aria-label="close"><GrClose /></button>
                         <div className={Style.contentWrapper}>
                             { partial === 'edit' ? <PartialEdit recipe={recipe}/> : '' }
-                            { partial === 'new' ? <PartialNew /> : '' }
+                            { partial === 'new' ? <PartialNew changeList={changeList}/> : '' }
+                            { partial === 'view' ? <PartialView recipe={recipe}/> : '' }
                         </div>
                     </div>
                 </div>

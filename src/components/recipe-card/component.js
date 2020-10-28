@@ -9,10 +9,10 @@ const RecipeCard = ({ recipe, lightboxState, deleteHandler, openHandler }) => {
     return (
         <>
             <div role="button" tabIndex={lightboxState ? -1 : 0 } className={`${Style.recipeCard} card-button`} 
-                onClick={() => openHandler(recipe, 'edit')} 
+                onClick={() => openHandler(recipe, 'view')} 
                 onKeyDown={(e) => { 
                     if ( e.keyCode === 13 ) {
-                        openHandler(recipe, 'edit')
+                        openHandler(recipe, 'view')
                     }
                 }}
             >
