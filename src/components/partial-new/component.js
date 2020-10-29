@@ -53,17 +53,34 @@ const PartialNew = ({newHandler}) => {
         newHandler(recipe)
     }
 
+    /**
+     * Single inputs
+     * @param {Event} e 
+     */
     const singleHandler = (e) => {
-        const element = e.target
-        const elementName = element.name
+        const elementName = e.target.name
+        const elementValue = e.target.value
 
-        editRecipe({...recipe, [elementName]: element.value})
+        editRecipe({...recipe, [elementName]: elementValue })
     }
 
+    /**
+     * Radio input
+     * @param {Event} e 
+     */
+    const radioHandler = (e) => {
+        const elementValue = e.target.value
+        editRecipe({...recipe, 'category': elementValue})
+    }
+
+    /**
+     * Dynamicly created inputs from nested array
+     * @param {Event} e 
+     * @param {Number} index 
+     */
     const nestedHandler = (e, index) => {
-        const element = e.target
-        const elementName = element.name
-        const elementValue = element.value
+        const elementName = e.target.name
+        const elementValue = e.target.value
 
         let recipeHolder = recipe
         let nestedArray = recipe[elementName]
@@ -72,15 +89,39 @@ const PartialNew = ({newHandler}) => {
         editRecipe(recipeHolder)
     }
 
-    const addEntry = (value) => {
+    /**
+     * Add a new entry
+     * @param {String} property 
+     */
+    const addEntry = (property) => {
         let recipeHolder = recipe
         let errorHolder = error
 
-        recipeHolder[value].push('')
-        errorHolder[value].push(false)
+        recipeHolder[property].push('')
+        errorHolder[property].push(false)
 
-        editRecipe({...recipe, ...recipeHolder})
-        isError({...error, ...errorHolder})
+        console.log(errorHolder)
+
+        editRecipe({...recipeHolder})
+        isError({...errorHolder})
+    }
+
+    /**
+     * Remove Entry
+     * @param {String} property 
+     * @param {Number} index 
+     */
+    const removeEntry = (property, index) => {
+        let recipeHolder = recipe
+        let errorHolder = error
+
+        recipeHolder[property].splice(index, 1)
+        errorHolder[property].splice(index, 1)
+
+        console.log(errorHolder)
+
+        editRecipe({...recipeHolder})
+        isError({...errorHolder})
     }
 
     // const id = () => {
@@ -137,8 +178,29 @@ const PartialNew = ({newHandler}) => {
                         </div>
                         <h3 className={Style.title}>Title</h3>
                         <input name="name" className={`${Style.nameInput} ${error.name ? Style.warning : ''}`} onChange={singleHandler}/> 
-                        <h3 className={Style.title}>Category (only accepts: meat, fish, vegan, dessert, other)</h3>
-                        <input name="category" className={`${Style.categoryInput} ${error.category ? Style.warning : ''}`} onChange={singleHandler}/> 
+                        <h3 className={Style.title}>Category</h3>
+                        <div onChange={radioHandler}>
+                            <label>
+                                Meat
+                                <input type="radio" name="Category" value="meat"/>
+                            </label>
+                            <label>
+                                Fish
+                                <input type="radio" name="Category" value="fish"/>
+                            </label>
+                            <label>
+                                Vegan
+                                <input type="radio" name="Category" value="vegan"/>
+                            </label>
+                            <label>
+                                Dessert
+                                <input type="radio" name="Category" value="dessert"/>
+                            </label>
+                            <label>
+                                Other
+                                <input type="radio" name="Category" value="other"/>
+                            </label>
+                        </div>
                         <div>
                             <h3 className={Style.title}>Ingredients</h3>
                             <button type="button" onClick={() => addEntry('ingredients')}>add</button>
@@ -150,6 +212,7 @@ const PartialNew = ({newHandler}) => {
                                         className={`${Style.ingredientsInput} ${error.ingredients[index] ? Style.warning : ''}`} 
                                         onChange={(e) => nestedHandler(e, index)}
                                     />
+                                    <button type="button" onClick={() => removeEntry('ingredients', index)}>Remove</button>
                                 </li>
                             )}
                         </ul>
@@ -164,6 +227,7 @@ const PartialNew = ({newHandler}) => {
                                         className={`${Style.stepsInput} ${error.steps[index] ? Style.warning : ''}`} 
                                         onChange={(e) => nestedHandler(e, index)} 
                                     />
+                                    <button type="button" onClick={() => removeEntry('steps', index)}>Remove</button>
                                 </li>
                             )}
                         </ol>
