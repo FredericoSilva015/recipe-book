@@ -8,7 +8,6 @@ const PartialNew = ({newHandler}) => {
      * Initial state
      */
     const  [ recipe, editRecipe ] = useState({
-        "_id": "",
         "category": "",
         "picture": "http://placehold.it/32x32",
         "name": "",
@@ -23,7 +22,6 @@ const PartialNew = ({newHandler}) => {
      * State of input on valid input
      */
     const  [ error, isError ] = useState({
-        "initialState": true,
         "category": false,
         "name": false,
         "ingredients": [false],
@@ -72,6 +70,17 @@ const PartialNew = ({newHandler}) => {
         nestedArray[index] = elementValue
 
         editRecipe(recipeHolder)
+    }
+
+    const addEntry = (value) => {
+        let recipeHolder = recipe
+        let errorHolder = error
+
+        recipeHolder[value].push('')
+        errorHolder[value].push(false)
+
+        editRecipe({...recipe, ...recipeHolder})
+        isError({...error, ...errorHolder})
     }
 
     // const id = () => {
@@ -130,22 +139,33 @@ const PartialNew = ({newHandler}) => {
                         <input name="name" className={`${Style.nameInput} ${error.name ? Style.warning : ''}`} onChange={singleHandler}/> 
                         <h3 className={Style.title}>Category (only accepts: meat, fish, vegan, dessert, other)</h3>
                         <input name="category" className={`${Style.categoryInput} ${error.category ? Style.warning : ''}`} onChange={singleHandler}/> 
-                        <h3 className={Style.title}>Ingredients</h3>
+                        <div>
+                            <h3 className={Style.title}>Ingredients</h3>
+                            <button type="button" onClick={() => addEntry('ingredients')}>add</button>
+                        </div>
                         <ul className={Style.ingredients}>
-                            <li className={Style.ingredientsLine}>
-                                <input name="ingredients" 
-                                    className={`${Style.ingredientsInput} ${error.ingredients[0] ? Style.warning : ''}`} 
-                                    onChange={(e) => nestedHandler(e, 0)}
-                                />
-                            </li>
+                            {recipe.ingredients.map((value, index) => 
+                                <li key={index} className={Style.ingredientsLine}>
+                                    <input name="ingredients" 
+                                        className={`${Style.ingredientsInput} ${error.ingredients[index] ? Style.warning : ''}`} 
+                                        onChange={(e) => nestedHandler(e, index)}
+                                    />
+                                </li>
+                            )}
                         </ul>
-                        <h3 className={Style.title}>Steps</h3>
+                        <div>
+                            <h3 className={Style.title}>Steps</h3>
+                            <button type="button" onClick={() => addEntry('steps')}>add</button>
+                        </div>
                         <ol className={Style.steps}>
-                            <li className={Style.stepsLine} >
-                                <textarea name="steps" 
-                                    className={`${Style.stepsInput} ${error.steps[0] ? Style.warning : ''}`} 
-                                    onChange={(e) => nestedHandler(e, 0)} />
-                            </li>
+                            {recipe.steps.map((value, index) =>
+                                <li key={index} className={Style.stepsLine} >
+                                    <textarea name="steps" 
+                                        className={`${Style.stepsInput} ${error.steps[index] ? Style.warning : ''}`} 
+                                        onChange={(e) => nestedHandler(e, index)} 
+                                    />
+                                </li>
+                            )}
                         </ol>
                         <div className={Style.cookingInfo}>
                             <div className={Style.time}>
