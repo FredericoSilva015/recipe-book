@@ -14,6 +14,8 @@ const PartialView = ({ recipe }) => {
                     <h2 className={Style.name}> 
                         {recipe.name}
                     </h2>
+                    <h3>Category</h3>
+                    <p>{recipe.category}</p>
                     <h3>Ingredients</h3>
                     <ul className={Style.ingredients}>
                         {recipe.ingredients.map( (value, index) => 

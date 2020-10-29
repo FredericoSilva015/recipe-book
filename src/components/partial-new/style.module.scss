@@ -7,7 +7,11 @@
 
 .imgWrapper {
     max-width: 300px;
-    margin-bottom: $small;
+    margin: 0 auto $small auto;
+}
+
+.title {
+    margin-bottom: $extra-small;
 }
 
 .ingredients, .steps {
@@ -15,34 +19,38 @@
 }
 
 .nameInput,
-.cookingInfo,
-.ingredientsLine,
-.stepsLine {
+.categoryInput,
+.ingredientsInput,
+.stepsInput,
+.hour,
+.min,
+.servingInput {
+    width: 100%;
+}
 
-    input, textarea {
-        width: 100%;
-        max-width: 800px;
+
+.ingredientsLine,
+.stepsLine,
+.name, 
+.serving, 
+.time {
+    display: flex;
+}
+
+.servingInput {
+    max-width: 50px;
+}
+
+.timeInput {
+    max-width: 80px;
+}
+
+.time, .serving {
+    h3 {
+        width: 120px;
     }
 }
 
-.ingredientsLine,
-.stepsLine {
-    display: flex;
-}
-
-.name, .serving, .time {
-    display: flex;
-}
-
-.nameInput {
-    margin-bottom: $small;
-}
-
-.stepsText {
-    max-width: 600px;
-}
-
-.label {
-    width: 100%;
-    max-width: 800px;
+.warning {
+    border: 1px solid $red;
 }

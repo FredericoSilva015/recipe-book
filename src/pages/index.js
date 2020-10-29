@@ -4,6 +4,7 @@ import RecipeList from '../components/recipe-list/component'
 import SEO from '../components/seo/component'
 import Lightbox from '../components/lightbox/component'
 import * as data from '../data/data.json'
+import { uuidv4 } from '../utils/utils'
 
 const IndexPage = () => {
 
@@ -27,6 +28,11 @@ const IndexPage = () => {
    */
   const [ recipe, setRecipe] = useState('');
 
+  /**
+   * Open lightbox handler
+   * @param {Object} value 
+   * @param {String} partial 
+   */
   const openHandler = (value, partial) => {
 
     setRecipe(value)
@@ -34,6 +40,9 @@ const IndexPage = () => {
     isOpen(true)
   }
 
+  /**
+   * Close lightbox handler
+   */
   const closeHandler = () =>{ 
     isOpen(false)
 
@@ -44,9 +53,19 @@ const IndexPage = () => {
     }, 200)
   }
   
+  /** */
+  const newHandler = (value) => {
+    const dataToChange = recipeList
+
+    value._id = uuidv4()
+    dataToChange.push(value)
+    
+    console.log(dataToChange);
+  }
 
   /**
    * Handle Delete
+   * @param {Event} event 
    * @param {Object} recipe 
    */
   const deleteHandler = (event, recipe) => {
@@ -72,7 +91,9 @@ const IndexPage = () => {
     }
   }, []);
 
-
+  /**
+   * Handle keydown Esc event on the lightbox
+   */
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
 
@@ -88,7 +109,7 @@ const IndexPage = () => {
     <Layout recipeList={recipeList} lightboxState={open} openHandler={openHandler} >
       <SEO title="Home" />
       <RecipeList recipeList={recipeList} lightboxState={open} deleteHandler={deleteHandler} openHandler={openHandler}/>
-      <Lightbox lightboxState={open} closeHandler={closeHandler} changeList={changeList} partial={partial} recipe={recipe} />
+      <Lightbox lightboxState={open} closeHandler={closeHandler} newHandler={newHandler} partial={partial} recipe={recipe} />
     </Layout>
 )}
 

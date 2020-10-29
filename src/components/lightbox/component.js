@@ -5,7 +5,7 @@ import PartialEdit from '../partial-edit/component'
 import PartialNew from '../partial-new/component'
 import PartialView from '../partial-view/component'
 
-const Lightbox = ({ lightboxState, closeHandler, partial, recipe, changeList }) => {
+const Lightbox = ({ lightboxState, closeHandler, partial, recipe, newHandler }) => {
 
     const [ animateLightbox, animate ] = useState('')
     const [ hide, setHidden] = useState(false)
@@ -34,10 +34,10 @@ const Lightbox = ({ lightboxState, closeHandler, partial, recipe, changeList }) 
             <div className={`${Style.lightbox} ${animateLightbox}`} >
                 <div className={Style.dialog}>
                     <div className={Style.content}>
-                        <button className={Style.closeButton} onClick={() => closeHandler()} aria-label="close"><GrClose /></button>
+                        <button className={Style.closeButton} onClick={closeHandler} aria-label="close"><GrClose /></button>
                         <div className={Style.contentWrapper}>
                             { partial === 'edit' ? <PartialEdit recipe={recipe}/> : '' }
-                            { partial === 'new' ? <PartialNew changeList={changeList}/> : '' }
+                            { partial === 'new' ? <PartialNew newHandler={newHandler}/> : '' }
                             { partial === 'view' ? <PartialView recipe={recipe}/> : '' }
                         </div>
                     </div>
