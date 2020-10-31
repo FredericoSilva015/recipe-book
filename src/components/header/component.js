@@ -8,7 +8,7 @@ const Header = ({ siteTitle, recipeList, lightboxState, openHandler }) => (
     <div className={'container ' + Style.headerWrapper}>
       <div className={Style.menuWrapper}>
         <h1 className={Style.title}>{siteTitle} <span role="img" aria-label="cheecky">🧐</span></h1>
-        <button className={Style.newButton} disabled={lightboxState} onClick={() => openHandler('', 'new') }>
+        <button className={Style.newButton} disabled={lightboxState} onClick={(e) => openHandler(e, '', 'new')}>
           New Recipe
           <div className={Style.iconWrapper}>
             <div className={Style.lineTop}></div>

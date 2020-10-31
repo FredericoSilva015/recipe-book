@@ -7,61 +7,50 @@
 
 .imgWrapper {
     max-width: 300px;
+    margin: 0 auto $small auto;
 }
 
+.title {
+    margin-bottom: $extra-small;
+}
+
+.ingredients, .steps {
+    padding: 0;
+}
+
+.nameInput,
+.categoryInput,
+.ingredientsInput,
+.stepsInput,
+.hour,
+.min,
+.servingInput {
+    width: 100%;
+}
+
+
+.ingredientsLine,
+.stepsLine,
 .name, 
-.cookingInfo,
-.ingredientsLine,
-.stepsLine {
-
-    input, textarea {
-        width: 100%;
-    }
-
-    input:disabled, textarea:disabled {
-        border: 1px solid $black;
-        display: none;
-        background-color: $transparent;
-    }
-}
-
-.ingredientsLine,
-.stepsLine {
-    display: flex;
-
-    margin-bottom: $small;
-}
-
-.name, .serving, .time {
+.serving, 
+.time {
     display: flex;
 }
 
-.stepsText, .buttonsWrapper {
-    padding-left: $small;
+.servingInput {
+    max-width: 50px;
 }
 
-.stepsText {
-    max-width: 600px;
+.timeInput {
+    max-width: 80px;
 }
 
-.edit {
-    display: flex;
-
-    padding: $extra_small;
-    
-    border-radius: 100%;
-
-    margin: 3px;
-
-    transition: background-color .5s ease-in-out;
-
-    color: $blue;
-
-    background-color: $transparent;
-
-    border: 1px solid $blue;
-
-    &:hover, &:focus {
-        background-color: $blue-light;
+.time, .serving {
+    h3 {
+        width: 120px;
     }
+}
+
+.warning {
+    border: 1px solid $red;
 }

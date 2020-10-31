@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import Style from './style.module.scss'
 import Image from '../image/component'
 
-const PartialNew = ({newHandler}) => {
+const PartialNew = ({newHandler, closeHandler}) => {
 
     /**
      * Initial state
@@ -36,21 +36,19 @@ const PartialNew = ({newHandler}) => {
      */
     const form = useRef(null)
 
+    /**
+     * On save action
+     * @param {*} e 
+     */
     const save = (e) => {
         e.preventDefault()
-        
-        // const objsHolder = recipe
 
-        // const valid = validate()
+        const check = validate()
 
-        // if( !valid ) {
-        //     console.log('Not valid')
-        //     return
-        // }
-
-        // const data = new FormData(form.current)
-
-        newHandler(recipe)
+        if(check) {
+            newHandler(recipe)
+            closeHandler()
+        }
     }
 
     /**
@@ -61,11 +59,19 @@ const PartialNew = ({newHandler}) => {
         const elementName = e.target.name
         const elementValue = e.target.value
 
-        editRecipe({...recipe, [elementName]: elementValue })
+        const check = !elementValue.length || (elementName === "servings" && !Number.isInteger(Number(elementValue)))
+
+        if (check) {
+            isError({...error, [elementName]: true})
+        } else {
+            editRecipe({...recipe, [elementName]: elementValue })
+            isError({...error, [elementName]: false})
+        }
+
     }
 
     /**
-     * Radio input
+     * Radio input Handler
      * @param {Event} e 
      */
     const radioHandler = (e) => {
@@ -74,7 +80,7 @@ const PartialNew = ({newHandler}) => {
     }
 
     /**
-     * Dynamicly created inputs from nested array
+     * Handler for dynamic created inputs
      * @param {Event} e 
      * @param {Number} index 
      */
@@ -82,11 +88,23 @@ const PartialNew = ({newHandler}) => {
         const elementName = e.target.name
         const elementValue = e.target.value
 
-        let recipeHolder = recipe
-        let nestedArray = recipe[elementName]
-        nestedArray[index] = elementValue
+        const recipeHolder = recipe
+        const errorHolder = error
 
-        editRecipe(recipeHolder)
+        const recipeArray = recipeHolder[elementName]
+        const errorArray = errorHolder[elementName]
+
+        if (elementValue.length) {
+            recipeArray[index] = elementValue
+            errorArray[index] = false
+
+            editRecipe({...recipeHolder})
+            isError({...errorHolder})
+        } else {
+            errorArray[index] = true
+
+            isError({...errorHolder})
+        }
     }
 
     /**
@@ -124,49 +142,60 @@ const PartialNew = ({newHandler}) => {
         isError({...errorHolder})
     }
 
-    // const id = () => {
-    //     return '_' + Math.random().toString(36).substr(2, 9);
-    //   };
 
-    // const validate = () => {
-    //     let valid = true
-    //     const errorObj = error
-    //     const data = new FormData(form.current)
+    /**
+     * On submit validation
+     * @returns {Boolean}
+     */
+    const validate = () => {
+        let valid = true
+        const errorHolder = error
+        const data = new FormData(form.current)
 
-    //     for (let [key, value] of data.entries()) { 
-    //         const nestedArray = key === 'ingredients' || key === 'steps' || key === 'time'
-
-    //         if( !value && !nestedArray ) {
-    //             errorObj[key] = true
-    //             valid = false
-    //         } else if ( value && !nestedArray ) {
-    //             errorObj[key] = false
-    //         }
-    //     }
-
-    //     errorObj.ingredients = arrayBuilder(data.entries(), 'ingredients', valid);
-    //     errorObj.steps = arrayBuilder(data.entries(), 'steps', valid);
-    //     errorObj.cooking_time = arrayBuilder(data.entries(), 'time', valid);
+        let ingredientsArray = [];
+        let stepsArray = [];
         
-    //     isError({...errorObj})
+        data.forEach( (value, key) => {
+            if (key === 'ingredients') {
 
-    //     return valid
-    // }
+                ingredientsArray.push(value)
+            }
 
-    // const arrayBuilder = (Obj, id, valid) => {
-    //     let newArray = []
+            if (key === 'steps') {
 
-    //     for (let [key, value] of Obj) {
-    //         if( key === id && !value ) {
-    //             newArray.push(true)
-    //             valid = false
-    //         } else if ( key === id ){
-    //             newArray.push(false)
-    //         }
-    //     }
+                stepsArray.push(value)
+            }
 
-    //     return newArray
-    // }
+            if (key !== 'ingredients' && key !== 'steps' && !value.length) {
+                valid = false
+                errorHolder[key] = true
+            }
+
+            if(key === 'servings' && !Number.isInteger(Number(value))) {
+                valid = false
+                errorHolder[key] = true
+            }
+        })
+
+        ingredientsArray.forEach((value, index) => {
+            if (!value.length) {
+                valid = false
+                errorHolder.ingredients[index] = true
+            }
+        })
+
+        stepsArray.forEach((value, index) => {
+            if (!value.length) {
+                valid = false
+                errorHolder.steps[index] = true
+            }
+        })
+
+        isError({...errorHolder})
+        
+        return valid
+    }
+
 
     return (
         <>
@@ -182,7 +211,7 @@ const PartialNew = ({newHandler}) => {
                         <div onChange={radioHandler}>
                             <label>
                                 Meat
-                                <input type="radio" name="Category" value="meat"/>
+                                <input type="radio" name="Category" value="meat" defaultChecked="checked"/>
                             </label>
                             <label>
                                 Fish
@@ -236,7 +265,7 @@ const PartialNew = ({newHandler}) => {
                                 <h3>Prep Time :</h3>
                                 <input name="cooking_time" 
                                     className={`${Style.timeInput} 
-                                    ${error.cooking_time[1] ? Style.warning : ''}`} 
+                                    ${error.cooking_time ? Style.warning : ''}`} 
                                     type="time" 
                                     onChange={singleHandler}
                                 />  

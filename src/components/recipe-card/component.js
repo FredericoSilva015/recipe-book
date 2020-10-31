@@ -3,16 +3,17 @@ import Style from './style.module.scss'
 import Image from '../image/component'
 import { GiCookingPot } from 'react-icons/gi'
 import { BsFillPeopleFill } from 'react-icons/bs'
-import { MdDeleteForever } from 'react-icons/md';
+import { BiEdit } from 'react-icons/bi';
+import { MdDeleteForever } from 'react-icons/md'
 
 const RecipeCard = ({ recipe, lightboxState, deleteHandler, openHandler }) => {
     return (
         <>
             <div role="button" tabIndex={lightboxState ? -1 : 0 } className={`${Style.recipeCard} card-button`} 
-                onClick={() => openHandler(recipe, 'view')} 
+                onClick={(e) => openHandler(e, recipe, 'view')} 
                 onKeyDown={(e) => { 
                     if ( e.keyCode === 13 ) {
-                        openHandler(recipe, 'view')
+                        openHandler(e, recipe, 'view')
                     }
                 }}
             >
@@ -24,6 +25,7 @@ const RecipeCard = ({ recipe, lightboxState, deleteHandler, openHandler }) => {
                     <p className={Style.cookingTime}><GiCookingPot />{recipe.cooking_time}</p>
                     <p className={Style.servings}><BsFillPeopleFill />{recipe.servings}</p>
                 </div>
+                <button className={Style.edit} disabled={lightboxState} aria-label="edit"onClick={(e) => openHandler( e, recipe, 'edit')}><BiEdit /></button>
                 <button className={Style.delete} disabled={lightboxState} aria-label="delete" 
                     onClick={(e) => deleteHandler(e, recipe)}
                 >

@@ -36,9 +36,9 @@ const Lightbox = ({ lightboxState, closeHandler, partial, recipe, newHandler }) 
                     <div className={Style.content}>
                         <button className={Style.closeButton} onClick={closeHandler} aria-label="close"><GrClose /></button>
                         <div className={Style.contentWrapper}>
-                            { partial === 'edit' ? <PartialEdit recipe={recipe}/> : '' }
-                            { partial === 'new' ? <PartialNew newHandler={newHandler}/> : '' }
-                            { partial === 'view' ? <PartialView recipe={recipe}/> : '' }
+                            { partial === 'edit' ? <PartialEdit recipe={recipe} newHandler={newHandler} closeHandler={closeHandler}/> : '' }
+                            { partial === 'new' ? <PartialNew newHandler={newHandler} closeHandler={closeHandler}/> : '' }
+                            { partial === 'view' ? <PartialView recipe={recipe} /> : '' }
                         </div>
                     </div>
                 </div>

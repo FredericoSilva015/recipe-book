@@ -33,8 +33,8 @@ const IndexPage = () => {
    * @param {Object} value 
    * @param {String} partial 
    */
-  const openHandler = (value, partial) => {
-
+  const openHandler = (e, value, partial) => {
+    e.stopPropagation()
     setRecipe(value)
     setPartial(partial)
     isOpen(true)
@@ -60,7 +60,7 @@ const IndexPage = () => {
     value._id = uuidv4()
     dataToChange.push(value)
     
-    console.log(dataToChange);
+    changeList(dataToChange);
   }
 
   /**
