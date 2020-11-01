@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
 import Search from '../search/component'
 import Style from './style.module.scss'
 
@@ -30,7 +30,19 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
+  openHandler: PropTypes.func
+}
+
+Header.lightboxState = {
+  lightboxState: PropTypes.bool
+}
+
+Header.defaultProps = {
   siteTitle: ``,
+}
+
+Header.defaultProps = {
+  lightboxState: false,
 }
 
 export default Header

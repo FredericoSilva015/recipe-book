@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import PropTypes from 'prop-types'
 import Style from './style.module.scss'
 import Image from '../image/component'
 
@@ -286,6 +287,14 @@ const PartialNew = ({newHandler, closeHandler}) => {
             
         </>
     )
+}
+
+PartialNew.propTypes = {
+    newHandler: PropTypes.func,
+}
+  
+PartialNew.propTypes = {
+    closeHandler: PropTypes.func,
 }
 
 export default PartialNew

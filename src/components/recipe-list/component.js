@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Style from './style.module.scss'
 import RecipeCard from '../recipe-card/component'
 
@@ -38,6 +39,26 @@ const RecipeList = ({recipeList, lightboxState, deleteHandler, openHandler}) => 
             </div>
         </>
     )
+}
+
+RecipeList.propTypes = {
+    recipeList: PropTypes.array,
+}
+  
+RecipeList.propTypes = {
+    lightboxState: PropTypes.bool,
+}
+
+RecipeList.propTypes = {
+    deleteHandler: PropTypes.func,
+}
+
+RecipeList.propTypes = {
+    openHandler: PropTypes.func,
+}
+
+RecipeList.defaultProps = {
+    lightboxState: false
 }
 
 export default RecipeList

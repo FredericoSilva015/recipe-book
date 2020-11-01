@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Style from './style.module.scss'
 import Image from '../image/component'
 import { GiCookingPot } from 'react-icons/gi'
@@ -34,6 +35,26 @@ const RecipeCard = ({ recipe, lightboxState, deleteHandler, openHandler }) => {
             </div>
         </>
     )
+}
+
+RecipeCard.propTypes = {
+    recipe: PropTypes.object,
+}
+  
+RecipeCard.propTypes = {
+    lightboxState: PropTypes.bool,
+}
+
+RecipeCard.propTypes = {
+    deleteHandler: PropTypes.func,
+}
+
+RecipeCard.propTypes = {
+    openHandler: PropTypes.func,
+}
+
+RecipeCard.defaultProps = {
+    lightboxState: false
 }
 
 export default RecipeCard;

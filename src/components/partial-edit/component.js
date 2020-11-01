@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import PropTypes from 'prop-types'
 import Style from './style.module.scss'
 import Image from '../image/component'
 
@@ -287,6 +288,18 @@ const PartialEdit = ({recipe, newHandler, closeHandler }) => {
             
         </>
     )
+}
+
+PartialEdit.propTypes = {
+    recipe: PropTypes.object,
+}
+
+PartialEdit.propTypes = {
+    newHandler: PropTypes.func,
+}
+  
+PartialEdit.propTypes = {
+    closeHandler: PropTypes.func,
 }
 
 export default PartialEdit;

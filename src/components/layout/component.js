@@ -43,4 +43,20 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
+Layout.propTypes = {
+  lightboxState: PropTypes.bool,
+}
+
+Layout.propTypes = {
+  recipeList: PropTypes.array,
+}
+
+Layout.propTypes = {
+  openHandler: PropTypes.func,
+}
+
+Layout.defaultProps = {
+  lightboxState: false
+}
+
 export default Layout

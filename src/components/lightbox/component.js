@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import Style from './style.module.scss'
 import { GrClose } from 'react-icons/gr'
 import PartialEdit from '../partial-edit/component'
@@ -49,6 +50,34 @@ const Lightbox = ({ lightboxState, closeHandler, partial, recipe, newHandler }) 
             </div>
         </>
     )
+}
+
+Lightbox.propTypes = {
+    lightboxState: PropTypes.bool,
+}
+
+Lightbox.propTypes = {
+    partial: PropTypes.string,
+}
+
+Lightbox.propTypes = {
+    recipe: PropTypes.object,
+}
+
+Lightbox.propTypes = {
+    newHandler: PropTypes.func,
+}
+  
+Lightbox.propTypes = {
+    closeHandler: PropTypes.func,
+}
+
+Lightbox.propTypes = {
+    closeHandler: PropTypes.func,
+}
+
+Lightbox.defaultProps = {
+    lightboxState: false
 }
 
 export default Lightbox;

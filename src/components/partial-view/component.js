@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Style from './style.module.scss'
 import Image from '../image/component'
 
@@ -46,6 +47,10 @@ const PartialView = ({ recipe }) => {
             
         </>
     )
+}
+
+PartialView.propTypes = {
+    recipe: PropTypes.object,
 }
 
 export default PartialView;
