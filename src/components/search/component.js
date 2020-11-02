@@ -6,7 +6,7 @@ const Search = ({ newSearch, lightboxState }) => {
     return (
         <div className={Style.wrapper}>
             <input disabled={lightboxState} 
-                onChange={(e) =>{ newSearch(e.target.value)}} 
+                onChange={(e) =>{ newSearch(e.target)}} 
                 type="text" className={Style.input} 
                 placeholder="🔍 Search for recipe"
             />

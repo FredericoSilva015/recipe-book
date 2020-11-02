@@ -9,7 +9,7 @@ const PartialNew = ({newHandler, closeHandler}) => {
      * Initial state
      */
     const  [ recipe, editRecipe ] = useState({
-        "category": "",
+        "category": "meat",
         "picture": "http://placehold.it/32x32",
         "name": "",
         "ingredients": [''],
@@ -119,8 +119,6 @@ const PartialNew = ({newHandler, closeHandler}) => {
         recipeHolder[property].push('')
         errorHolder[property].push(false)
 
-        console.log(errorHolder)
-
         editRecipe({...recipeHolder})
         isError({...errorHolder})
     }
@@ -136,8 +134,6 @@ const PartialNew = ({newHandler, closeHandler}) => {
 
         recipeHolder[property].splice(index, 1)
         errorHolder[property].splice(index, 1)
-
-        console.log(errorHolder)
 
         editRecipe({...recipeHolder})
         isError({...errorHolder})

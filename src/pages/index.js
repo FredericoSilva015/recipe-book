@@ -21,7 +21,7 @@ const IndexPage = () => {
   /**
    * State Value of search
    */
-  const  [ searchValue, updateSearch ] = useState('')
+  const  [ inputSearch , updateSearch ] = useState('')
 
   /**
    * Lightbox open state
@@ -73,9 +73,13 @@ const IndexPage = () => {
     value._id = uuidv4()
     dataToChange.push(value)
     
-    changeList(dataToChange);
-    updateView(dataToChange)
-    query(searchValue)
+    changeList(dataToChange)
+
+    if( inputSearch ) {
+      updateView(recipeList.filter(array => array.name.toLowerCase().indexOf(inputSearch.value.toLowerCase()) >= 0))
+    } else {
+      updateView(dataToChange)
+    }
   }
 
   /**
@@ -111,13 +115,9 @@ const IndexPage = () => {
     };
   }, [handleEsc]);
 
-  const newSearch = (value) => {
-    updateSearch(value.toLowerCase())
-    query(value.toLowerCase())
-  }
-
-  const query = (value) => {
-    updateView(recipeList.filter(array => array.name.toLowerCase().indexOf(value) >= 0))
+  const newSearch = (element) => {
+    updateSearch(element)
+    updateView(recipeList.filter(array => array.name.toLowerCase().indexOf(element.value.toLowerCase()) >= 0))
   }
 
   // Lock scrolling in the body
