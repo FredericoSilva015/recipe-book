@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Search from '../search/component'
 import Style from './style.module.scss'
 
-const Header = ({ siteTitle, recipeList, lightboxState, openHandler }) => (
+const Header = ({ siteTitle, newSearch, lightboxState, openHandler }) => (
   <header className={Style.header}>
     <div className={'container ' + Style.headerWrapper}>
       <div className={Style.menuWrapper}>
@@ -16,7 +16,7 @@ const Header = ({ siteTitle, recipeList, lightboxState, openHandler }) => (
           </div>
         </button>
       </div>
-      <Search recipeList={recipeList} lightboxState={lightboxState}/>
+      <Search newSearch={newSearch} lightboxState={lightboxState}/>
     </div>
   </header>
 )

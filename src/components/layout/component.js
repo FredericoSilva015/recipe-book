@@ -12,7 +12,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Header from '../header/component'
 import '../../style/global.scss'
 
-const Layout = ({ children, lightboxState, recipeList, openHandler }) => {
+const Layout = ({ children, lightboxState, newSearch, openHandler }) => {
 
   /**
    * site metadata
@@ -30,7 +30,7 @@ const Layout = ({ children, lightboxState, recipeList, openHandler }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} recipeList={recipeList} lightboxState={lightboxState} openHandler={openHandler} />
+      <Header siteTitle={data.site.siteMetadata?.title || `Title`} newSearch={newSearch} lightboxState={lightboxState} openHandler={openHandler} />
       <main className="container">{children}</main>
       <footer className="container">
         <p>A lot of <span role="img" aria-label="heart">&#128151;</span> from Portugal</p>
@@ -48,7 +48,7 @@ Layout.propTypes = {
 }
 
 Layout.propTypes = {
-  recipeList: PropTypes.array,
+  newSearch: PropTypes.string,
 }
 
 Layout.propTypes = {

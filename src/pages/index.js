@@ -9,9 +9,19 @@ import { uuidv4 } from '../utils/utils'
 const IndexPage = () => {
 
   /**
-   * defining data into App state and setting up changeList to modify state
+   * Main definition data into App
    */
   const  [ recipeList, changeList ] = useState(data.default)
+
+  /**
+   * data view defenition
+   */
+  const  [ viewList, updateView ] = useState(recipeList)
+
+  /**
+   * State Value of search
+   */
+  const  [ searchValue, updateSearch ] = useState('')
 
   /**
    * Lightbox open state
@@ -35,6 +45,7 @@ const IndexPage = () => {
    */
   const openHandler = (e, value, partial) => {
     e.stopPropagation()
+
     setRecipe(value)
     setPartial(partial)
     isOpen(true)
@@ -53,7 +64,9 @@ const IndexPage = () => {
     }, 200)
   }
   
-  /** */
+  /**
+   * New recipe handler
+   */
   const newHandler = (value) => {
     const dataToChange = recipeList
 
@@ -61,6 +74,8 @@ const IndexPage = () => {
     dataToChange.push(value)
     
     changeList(dataToChange);
+    updateView(dataToChange)
+    query(searchValue)
   }
 
   /**
@@ -70,14 +85,8 @@ const IndexPage = () => {
    */
   const deleteHandler = (event, recipe) => {
     event.stopPropagation();
-
-    if (recipe._id) {
-      let dataToChange = [...recipeList]
-
-      dataToChange = dataToChange.filter((value) => value._id !== recipe._id ? value : '')
-
-      return changeList(dataToChange)
-    }
+    changeList(recipeList.filter((value) => value._id !== recipe._id ? value : ''))
+    updateView(viewList.filter((value) => value._id !== recipe._id ? value : ''))
   }
 
   /**
@@ -102,13 +111,22 @@ const IndexPage = () => {
     };
   }, [handleEsc]);
 
+  const newSearch = (value) => {
+    updateSearch(value.toLowerCase())
+    query(value.toLowerCase())
+  }
+
+  const query = (value) => {
+    updateView(recipeList.filter(array => array.name.toLowerCase().indexOf(value) >= 0))
+  }
+
   // Lock scrolling in the body
   useEffect(() => { open ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible' })
 
   return (
-    <Layout recipeList={recipeList} lightboxState={open} openHandler={openHandler} >
+    <Layout lightboxState={open} openHandler={openHandler} newSearch={newSearch}>
       <SEO title="Home" />
-      <RecipeList recipeList={recipeList} lightboxState={open} deleteHandler={deleteHandler} openHandler={openHandler}/>
+      <RecipeList recipeList={viewList} lightboxState={open} deleteHandler={deleteHandler} openHandler={openHandler}/>
       <Lightbox lightboxState={open} closeHandler={closeHandler} newHandler={newHandler} partial={partial} recipe={recipe} />
     </Layout>
 )}
