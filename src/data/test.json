@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "_id": "5f8b2a7fdc18e2cd5053dcbc",
+      "id": "5f8b2a7fdc18e2cd5053dcbc",
       "category": "meat",
       "picture": "http://placehold.it/32x32",
       "name": "Keri Barker",
@@ -27,7 +27,7 @@
       "servings": 1
     },
     {
-      "_id": "5f8b2a7f26956f166dc877f3",
+      "id": "5f8b2a7f26956f166dc877f3",
       "category": "meat",
       "picture": "http://placehold.it/32x32",
       "name": "Graham Sanford",
@@ -53,7 +53,7 @@
       "servings": 7
     },
     {
-      "_id": "5f8b2a7ffd32f319bc46231a",
+      "id": "5f8b2a7ffd32f319bc46231a",
       "category": "fish",
       "picture": "http://placehold.it/32x32",
       "name": "Mullins Fields",
@@ -79,7 +79,7 @@
       "servings": 9
     },
     {
-      "_id": "5f8b2a7f6bb6fb9ae267cd0e",
+      "id": "5f8b2a7f6bb6fb9ae267cd0e",
       "category": "vegan",
       "picture": "http://placehold.it/32x32",
       "name": "Mckenzie Bruce",
@@ -105,7 +105,7 @@
       "servings": 2
     },
     {
-      "_id": "5f8b2a7f3b9d4e6c4603ae57",
+      "id": "5f8b2a7f3b9d4e6c4603ae57",
       "category": "dessert",
       "picture": "http://placehold.it/32x32",
       "name": "Fran Shaffer",
@@ -131,7 +131,7 @@
       "servings": 6
     },
     {
-      "_id": "5f8b2a7ff05323af22b1a3d4",
+      "id": "5f8b2a7ff05323af22b1a3d4",
       "category": "other",
       "picture": "http://placehold.it/32x32",
       "name": "Cathleen Montoya",
@@ -156,4 +156,5 @@
       "cooking_time": "05:31",
       "servings": 6
     }
-  ]}
+  ]
+}

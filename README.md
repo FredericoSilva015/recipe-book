@@ -6,6 +6,12 @@
 
     ```npm install -g gatsby-cli```
 
+1.  **Add Json-server.**
+
+    The client is necessary to run gatsby
+
+    ```npm install -g json-server```
+
 1.  **Head into the App folder**
 
     Current Folder where the APP is located
@@ -17,6 +23,12 @@
     Run NPM install command
 
     ```npm install```
+
+1.  **Start the back end**
+
+    I am running the back end on top of test.json
+
+    ```json-server --watch src/data/test.json```
 
 1.  **Start the developing**
 

@@ -1,22 +1,28 @@
 import React, { useEffect, useState, useCallback } from 'react'
+import Loading from '../components/loading/component'
 import Layout from '../components/layout/component'
 import RecipeList from '../components/recipe-list/component'
 import SEO from '../components/seo/component'
 import Lightbox from '../components/lightbox/component'
-import * as data from '../data/data.json'
+// import * as data from '../data/data.json'
 import { uuidv4 } from '../utils/utils'
 
 const IndexPage = () => {
 
   /**
+   * State of the app, if loaded or not
+   */
+  const [ appState, setAppState ] = useState({loading: true})
+
+  /**
    * Main definition data into App
    */
-  const  [ recipeList, changeList ] = useState(data.default)
+  const  [ recipeList, changeList ] = useState('')
 
   /**
    * data view defenition
    */
-  const  [ viewList, updateView ] = useState(recipeList)
+  const  [ viewList, updateView ] = useState('')
 
   /**
    * State Value of search
@@ -70,8 +76,16 @@ const IndexPage = () => {
   const newHandler = (value) => {
     const dataToChange = recipeList
 
-    value._id = uuidv4()
+    value.id = uuidv4()
     dataToChange.push(value)
+
+    fetch('http://localhost:3000/data', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(value),
+    })
     
     changeList(dataToChange)
 
@@ -89,8 +103,10 @@ const IndexPage = () => {
    */
   const deleteHandler = (event, recipe) => {
     event.stopPropagation();
-    changeList(recipeList.filter((value) => value._id !== recipe._id ? value : ''))
-    updateView(viewList.filter((value) => value._id !== recipe._id ? value : ''))
+    changeList(recipeList.filter((value) => value.id !== recipe.id ? value : ''))
+    updateView(viewList.filter((value) => value.id !== recipe.id ? value : ''))
+
+    fetch(`http://localhost:3000/data/${recipe.id}`,{method: 'delete'})
   }
 
   /**
@@ -115,6 +131,27 @@ const IndexPage = () => {
     };
   }, [handleEsc]);
 
+  /**
+   * Fetch app start data
+   */
+  useEffect(() => {
+
+    fetch('http://localhost:3000/data', {
+      method: "get"})
+    .then(resp => resp.json())
+    .then(json => {  
+      changeList(json)
+      updateView(json)
+      setAppState({loading: false})
+    })
+    .catch(error => console.log(error))
+
+  }, [])
+
+  /**
+   * When input search receives a value
+   * @param {Sting} element input search element 
+   */
   const newSearch = (element) => {
     updateSearch(element)
     updateView(recipeList.filter(array => array.name.toLowerCase().indexOf(element.value.toLowerCase()) >= 0))
@@ -124,11 +161,15 @@ const IndexPage = () => {
   useEffect(() => { open ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible' })
 
   return (
-    <Layout lightboxState={open} openHandler={openHandler} newSearch={newSearch}>
-      <SEO title="Home" />
-      <RecipeList recipeList={viewList} lightboxState={open} deleteHandler={deleteHandler} openHandler={openHandler}/>
-      <Lightbox lightboxState={open} closeHandler={closeHandler} newHandler={newHandler} partial={partial} recipe={recipe} />
-    </Layout>
+    <>
+    {appState.loading ? <Loading/> :
+      <Layout lightboxState={open} openHandler={openHandler} newSearch={newSearch}>
+        <SEO title="Home" />
+        <RecipeList recipeList={viewList} lightboxState={open} deleteHandler={deleteHandler} openHandler={openHandler}/>
+        <Lightbox lightboxState={open} closeHandler={closeHandler} newHandler={newHandler} partial={partial} recipe={recipe} />
+      </Layout> 
+    }
+    </>
 )}
 
 export default IndexPage

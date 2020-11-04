@@ -1,0 +1,18 @@
+@import './src/style/variable';
+@import './src/style/mixin';
+
+.container {
+    position: relative;
+}
+
+.first {
+    position: absolute;
+    top: calc(50vh - 120px);
+    left: calc(50vw - 80px);
+}
+
+.second {
+    position: absolute;
+    top: calc(50vh - 80px);
+    right: calc(50vw - 80px);
+}
